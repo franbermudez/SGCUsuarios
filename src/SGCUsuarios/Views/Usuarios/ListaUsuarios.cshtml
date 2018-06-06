@@ -1,0 +1,49 @@
+﻿@*@model IEnumerable<SGC.Models.Usuarios>*@
+@model SGC.ViewModels.UsuariosViewModels
+
+<div class="container">
+    <h2>Lista de Usuarios</h2>
+  
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th class="success">Codigo</th>
+                <th class="success">Empleado</th>
+                <th class="success">Cuenta</th>
+                <th class="success">IdNivel</th>
+                <th class="success">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var usuario in Model.Usuarios)
+            {
+                <tr>
+                    <td>@usuario.CodigoUsuario</td>
+                    <td>@usuario.NombreUsuario @usuario.ApellidosUsuario</td>
+                    <td>@usuario.CuentaUsuario</td>
+
+                    @if (@usuario.IdNivel == 1)
+                    {
+                        <td>Administrador</td>
+                    }
+                    @if (@usuario.IdNivel == 2)
+                    {
+                        <td>Usuario</td>
+                    }
+
+                    @if (@usuario.EstadoUsuario == true)
+                    {
+                        <td>Activo</td>
+                    }
+                    @if (@usuario.EstadoUsuario == false)
+                    {
+                        <td>Inhabilitado</td>
+                    }
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+</div>
